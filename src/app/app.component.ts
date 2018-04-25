@@ -7,9 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public title: string = 'app';
-  public logo: string = 'https://angular.io/assets/images/logos/angular/angular.png'
+  public logo: string = 'https://angular.io/assets/images/logos/angular/angular.png';
+  public placeholderText: string = 'Search';
 
   public setTitle(title: string): void {
-    this.title  = title;
+    this.title = title;
+    this.placeholderText = title;
   }
+
 }

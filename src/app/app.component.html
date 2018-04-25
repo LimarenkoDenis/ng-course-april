@@ -1,11 +1,7 @@
 <div style="text-align:center">
   <h1>{{title}}</h1>
-  <img [src]="logo" [alt]="alt">
+  <img [src]="logo">
   <mat-card>
-    <app-search [placeholder]="alt" (myChange)="setTitle($event)"></app-search>
+    <app-search [placeholder]="placeholderText" (myChange)="setTitle($event)"></app-search>
   </mat-card>
 </div>
-
-
-
-
