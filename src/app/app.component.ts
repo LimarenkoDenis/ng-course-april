@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  public title: string = 'app';
+  public logo: string = 'https://angular.io/assets/images/logos/angular/angular.png'
+
+  public setTitle(title: string): void {
+    this.title  = title;
+  }
 }
