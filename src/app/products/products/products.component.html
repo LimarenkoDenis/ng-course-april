@@ -1,0 +1,27 @@
+<div class="cards">
+  <div *ngFor="let item of products | searchPipe: title; index as i; first as isFirst; odd as IsOdd " (click)="setActiveItem(i)">
+
+    <!-- TODO to separate component product card -->
+
+    <mat-card class="example-card" appHighlight [ngClass]="{'active': i === activeItem, 'first': isFirst}">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{item.title}}</mat-card-title>
+        <div *ngIf="i === activeItem">
+          <input type="text" #inputValue [value]="item.title">
+          <span (click)="edit(inputValue.value)">Ok</span>
+        </div>
+      </mat-card-header>
+      <img mat-card-image [src]="item.photo" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+          {{item.description}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>{{item.price}}</button>
+        <button mat-button>Add to Cart</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

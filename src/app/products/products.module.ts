@@ -1,14 +1,14 @@
 import { MaterialModule } from './../material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SearchComponent } from './search.component';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule
   ],
-  declarations: [SearchComponent],
-  exports: [SearchComponent]
+  declarations: [ProductsComponent],
+  exports: [ProductsComponent]
 })
-export class SearchModule { }
+export class ProductsModule { }

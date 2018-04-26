@@ -2,6 +2,22 @@
   <h1>{{title}}</h1>
   <img [src]="logo">
   <mat-card>
-    <app-search [placeholder]="placeholderText" (myChange)="setTitle($event)"></app-search>
+    <app-search [placeholder]="placeholderText" (myChange)="setTitle($event)">
+      <div #search>1</div>
+      <div #search>2</div>
+      <div #search>3</div>
+    </app-search>
   </mat-card>
+
+  <div *appAccess="['admin']">
+    Only for admin
+  </div>
+
+  <app-products
+    [products]="products"
+    [activeItem]="activeItem"
+    (onSetActiveItem)="setActiveItem($event)"
+    (onEdit)="edit($event)">
+  </app-products>
+
 </div>
