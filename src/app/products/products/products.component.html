@@ -1,5 +1,5 @@
 <div class="cards">
-  <div *ngFor="let item of products | searchPipe: title; index as i; first as isFirst; odd as IsOdd " (click)="setActiveItem(i)">
+  <div *ngFor="let item of products | searchPipe: search; index as i; first as isFirst; odd as IsOdd " (click)="setActiveItem(i)">
 
     <!-- TODO to separate component product card -->
 

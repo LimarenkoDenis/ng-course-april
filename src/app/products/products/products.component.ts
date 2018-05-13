@@ -10,6 +10,9 @@ export class ProductsComponent {
   public products: any;
 
   @Input()
+  public search: string;
+
+  @Input()
   public activeItem: number;
 
   @Output()

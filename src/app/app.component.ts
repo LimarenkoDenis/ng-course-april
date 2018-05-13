@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public title: string = 'app';
+  public title: string;
   public logo: string = 'https://angular.io/assets/images/logos/angular/angular.png';
   public placeholderText: string = '';
   public activeItem: number = 0;

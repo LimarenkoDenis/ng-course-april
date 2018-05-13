@@ -15,6 +15,7 @@
 
   <app-products
     [products]="products"
+    [search]="title"
     [activeItem]="activeItem"
     (onSetActiveItem)="setActiveItem($event)"
     (onEdit)="edit($event)">

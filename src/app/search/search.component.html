@@ -1,6 +1,6 @@
 <form class="example-form">
     <mat-form-field class="example-full-width">
-      <input matInput  [placeholder]="placeholder" #ref value="Sushi" (input)="search(ref.value)">
+      <input matInput  [placeholder]="placeholder" #ref (input)="search(ref.value)">
 
     </mat-form-field>
 
