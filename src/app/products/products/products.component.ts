@@ -21,11 +21,18 @@ export class ProductsComponent {
   @Output()
   public onEdit: EventEmitter<string> = new EventEmitter();
 
+  @Output()
+  public onAddToCart: EventEmitter<Product> = new EventEmitter();
+
   public setActiveItem(index: number): void {
     this.onSetActiveItem.emit(index);
   }
 
   public edit(value: string): void {
     this.onEdit.emit(value);
+  }
+
+  public addToCart(product: Product): void {
+    this.onAddToCart.emit(product);
   }
 }

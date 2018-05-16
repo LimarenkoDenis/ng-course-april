@@ -13,12 +13,22 @@
     Only for admin
   </div>
 
-  <app-products
-    [products]="products"
-    [search]="title"
-    [activeItem]="activeItem"
-    (onSetActiveItem)="setActiveItem($event)"
-    (onEdit)="edit($event)">
-  </app-products>
+  <div class="wrapper">
+    <div class="products">
+      <app-products
+        [products]="products$ | async"
+        [search]="title"
+        [activeItem]="activeItem"
+        (onSetActiveItem)="setActiveItem($event)"
+        (onEdit)="edit($event)"
+        (onAddToCart)="addToCart($event)">
+      </app-products>
+    </div>
+    <div class="cart">
+        <app-cart></app-cart>
+    </div>
+  </div>
+
+
 
 </div>
