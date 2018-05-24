@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _activateRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this._activateRoute.data.subscribe(data => {
+      console.log(data);
+
+    })
   }
 
 }

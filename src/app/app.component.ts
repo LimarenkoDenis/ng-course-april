@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { ProductsService } from './material/services/products.service.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {switchMap} from 'rxjs/operators'
 @Component({
   selector: 'app-root',
@@ -18,7 +18,8 @@ export class AppComponent implements OnInit {
 
   public constructor(
     private _productService: ProductsService,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _router: Router
   ) {}
 
   public ngOnInit(): void {
@@ -42,6 +43,10 @@ export class AppComponent implements OnInit {
 
   public addToCart(product: Product): void {
     this._productService.addToCart(product);
+  }
+
+  public navigate(): void {
+    this._router.navigate(['cart', '1']);
   }
 
 }

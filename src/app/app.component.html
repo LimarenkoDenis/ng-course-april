@@ -8,6 +8,10 @@
       <div #search>3</div>
     </app-search>
   </mat-card>
+  <span [routerLink]="['']" [queryParams]="{_limit: 2, _page: 2}">Query Params</span>
+  <span (click)="navigate()">Go to page</span>
+  <span [routerLink]="[{ outlets: { popup: [''] } }]">Popup</span>
+  <!-- <span [routerLink]="['', {outlets: {'myoutlet' } }">NotFound</span> -->
 
   <div *appAccess="['admin']">
     Only for admin
@@ -29,6 +33,7 @@
 
      <router-outlet></router-outlet>
 
+     <router-outlet name="myoutlet"></router-outlet>
         <!-- <app-cart></app-cart> -->
     </div>
   </div>

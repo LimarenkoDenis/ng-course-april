@@ -17,6 +17,7 @@ export class ProductsService {
 
   }
   public getProducts(queryParams?: {_limit: string, _page: string}): Observable<Product[]> {
+    console.log(queryParams)
     const params: HttpParams = new HttpParams({fromObject: queryParams});
     return this._http.get<Product[]>(`${this._url}/products`, {params});
   }
@@ -42,7 +43,11 @@ export class ProductsService {
   }
 
   public getUser(): Observable<boolean> {
-    return of(false);
+    return of(true);
     // return this._http.get('');
+  }
+
+  public getCartItem(id: string): Observable<Product> {
+    return this._http.get<Product>(`${this._url}/products/${id}`);
   }
 }

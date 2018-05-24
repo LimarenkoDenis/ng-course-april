@@ -13,6 +13,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormComponent } from './form/form.component';
 import { DetailsComponent } from './form/details/details.component';
 import { AddressComponent } from './form/address/address.component';
+import { DeactivateService } from './material/services/deactivate.service';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { PopupComponent } from './popup/popup.component';
 
 const routes: Routes = [
   { path: '', component: AboutUsComponent },
@@ -20,13 +23,21 @@ const routes: Routes = [
     path: 'form',
     component: FormComponent,
     canActivate: [GuardService],
+    canDeactivate: [DeactivateService],
+    data: {
+      user: {name: 'Dan'}
+    },
     children: [
       { path: '', redirectTo: 'details', pathMatch: 'full' },
       { path: 'details', component: DetailsComponent },
       { path: 'address', component: AddressComponent }
     ]
   },
-  { path: 'cart', loadChildren: './cart/cart.module#CartModule' }
+  { path: 'cart', loadChildren: './cart/cart.module#CartModule' },
+  { path: '**', component: NotFoundComponent},
+  {path: '', component: NotFoundComponent, outlet: 'myoutlet' },
+  {path: 'popup', component: PopupComponent, outlet: 'myoutlet' }
+
 ];
 
 @NgModule({
@@ -36,6 +47,8 @@ const routes: Routes = [
     FormComponent,
     DetailsComponent,
     AddressComponent,
+    NotFoundComponent,
+    PopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +60,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [GuardService],
+  providers: [GuardService, DeactivateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
