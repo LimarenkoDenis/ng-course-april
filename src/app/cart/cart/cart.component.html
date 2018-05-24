@@ -1,5 +1,6 @@
 <mat-list>
-  <mat-list-item *ngFor="let item of cart">
+  <h1>Cart</h1>
+  <mat-list-item *ngFor="let item of cart" [routerLink]="[item.id]">
     <span> {{item.title}}</span>
     <span>{{item.amount}}</span>
     <span (click)="deleteFromCart(item.id)">X</span>

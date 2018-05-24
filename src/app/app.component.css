@@ -2,3 +2,7 @@
   width: 1000px;
   float: left;
 };
+.active {
+  color: red;
+  background: red;
+}

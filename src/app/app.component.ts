@@ -1,6 +1,8 @@
 import { Observable } from 'rxjs';
 import { ProductsService } from './material/services/products.service.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import {switchMap} from 'rxjs/operators'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,24 +17,24 @@ export class AppComponent implements OnInit {
   public products$: Observable<Product[]>;
 
   public constructor(
-    private _productService: ProductsService
+    private _productService: ProductsService,
+    private _activatedRoute: ActivatedRoute
   ) {}
 
   public ngOnInit(): void {
+    this.products$ = this._activatedRoute.queryParams.pipe(
+      switchMap((queryParams: {_limit: string, _page: string}) => this._productService.getProducts(queryParams))
+    );
+
     // this.products = this._productService.getProducts()
     // this._productService.getProducts().subscribe((products: Product[]) => this.products = products);
-    this.products$ = this._productService.getProducts();
+    // this.products$ = this._productService.getProducts();
   }
 
   public setTitle(title: string): void {
     this.title = title;
     this.placeholderText = title;
   }
-
-  // public edit(title: string): void {
-  //   const product: any = this.products[this.activeItem];
-  //   this.products.splice(this.activeItem, 1, {...product, title});
-  // }
 
   public setActiveItem(index: number): void {
     this.activeItem = index;

@@ -1,8 +1,8 @@
 import { DOMAIN_TOKEN } from './../../myconfig';
 import { Injectable, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-// import { environment } from '../../../environments/environment';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +10,15 @@ import { Observable } from 'rxjs';
 export class ProductsService {
   public cart: Product[] = [];
 
-
   public constructor(
     private _http: HttpClient,
     @Inject(DOMAIN_TOKEN) private _url: string
   ) {
 
   }
-  public getProducts(): Observable<Product[]> {
-    // `${environment.api}/products`
-    return this._http.get<Product[]>(`${this._url}/products`);
+  public getProducts(queryParams?: {_limit: string, _page: string}): Observable<Product[]> {
+    const params: HttpParams = new HttpParams({fromObject: queryParams});
+    return this._http.get<Product[]>(`${this._url}/products`, {params});
   }
 
   public getCart(): Product[] {
@@ -40,5 +39,10 @@ export class ProductsService {
   public deleteFromCart(id: string): void {
     const index: number = this.cart.findIndex((item: Product) => item.id === id);
     this.cart.splice(index, 1);
+  }
+
+  public getUser(): Observable<boolean> {
+    return of(false);
+    // return this._http.get('');
   }
 }

@@ -18,14 +18,18 @@
       <app-products
         [products]="products$ | async"
         [search]="title"
-        [activeItem]="activeItem"
         (onSetActiveItem)="setActiveItem($event)"
-        (onEdit)="edit($event)"
         (onAddToCart)="addToCart($event)">
       </app-products>
     </div>
     <div class="cart">
-        <app-cart></app-cart>
+      <button routerLink="" routerLinkActive="active">About Us</button>
+      <button routerLink="/cart">Cart</button>
+      <button routerLink="/form" routerLinkActive="active">Form</button>
+
+     <router-outlet></router-outlet>
+
+        <!-- <app-cart></app-cart> -->
     </div>
   </div>
 
